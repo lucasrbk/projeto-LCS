@@ -18,9 +18,9 @@ void abre_arquivos(){
             printf("%s \n", texto2);}
 
     tam1 = strlen(texto1);
-    printf("%d",tam1);
+    printf("%d\n",tam1);
     tam2 = strlen(texto2);
-    printf("%d",tam2);
+    printf("%d\n",tam2);
 
 }
 
