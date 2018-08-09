@@ -3,6 +3,51 @@
 #include <string.h>
 //#include <locale.h>
 
+void imprimir(char *texto1,char *texto2){
+
+int tam=(strlen(texto1)+strlen(texto1));
+int i=0;
+
+        printf("%s\n",texto1);
+        printf("%s\n",texto2);
+        printf("tamanho dos textos: %d \n",tam);
+}
+
+void teste(){
+
+char texto1[10][10];
+char texto2[10][10];
+int x,y,cont;
+
+    printf("digite uma sequencia: ");
+    scanf("%s",texto1);
+    printf("digite uma sequencia: ");
+    scanf("%s",texto2);
+
+    imprimir(texto1,texto2);
+
+    if(texto1[i]==texto2[i]){
+
+    }
+
+
+
+}
+void lcs(char *texto1, char* texto2){
+
+    char matriz[10][10];
+    int tam,cont,i=1,x,y;
+    tam = (strlen(texto1)+strlen(texto2));
+
+    while(i<=tam){
+
+        if(texto1[i]==texto2[i]){
+
+        }
+    }
+
+
+}
 void abre_arquivos(){
       FILE* f; FILE* f2;
       int tam1,tam2;
@@ -40,7 +85,9 @@ int main(){
 //setlocale  (LC_ALL, "Portuguese");
 
 
-    abre_arquivos();
+    //abre_arquivos();
+
+    teste();
 
 
     return 0;
