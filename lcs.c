@@ -4,8 +4,7 @@
 //#include <locale.h>
 
 void imprimir(char *texto1,char *texto2){
-
-int tam=(strlen(texto1)+strlen(texto1));
+int tam = (strlen(texto1)+strlen(texto2));
 int i=0;
 
         printf("%s\n",texto1);
@@ -15,9 +14,13 @@ int i=0;
 
 void teste(){
 
-char texto1[10][10];
-char texto2[10][10];
-int x,y,cont;
+int matriz[10][10];
+char texto1[10];
+char texto2[10];
+int tam = (strlen(texto1)+strlen(texto2));
+int x,y,i,j,cont;
+int resultante;
+char sem[strlen(texto1)];
 
     printf("digite uma sequencia: ");
     scanf("%s",texto1);
@@ -26,28 +29,41 @@ int x,y,cont;
 
     imprimir(texto1,texto2);
 
-    if(texto1[i]==texto2[i]){
-
-    }
-
-
+    resultante = lcs(texto1,texto2);
 
 }
-void lcs(char *texto1, char* texto2){
 
-    char matriz[10][10];
-    int tam,cont,i=1,x,y;
+int lcs(char *texto1, char* texto2){
+
+    char matriz[strlen(texto1)+1][strlen(texto2)+1];
+    int tam,cont,i=0,j=0,x,y;
     tam = (strlen(texto1)+strlen(texto2));
+    int res;
 
-    while(i<=tam){
+    for(i=0;i<=strlen(texto1);i++){
+        matriz[i][0]=0;
+    }
+     for(j=0;j<=strlen(texto2);j++){
+        matriz[0][j]=0;
+    }
 
-        if(texto1[i]==texto2[i]){
-
+   for(i=0;i<=strlen(texto1);i++){
+        for(j=0;j<=strlen(texto2);j++){
+            if(texto1[i]==texto2[i]){
+                matriz[i][j] = matriz[i-1][j-1] +1;
+                }else if(matriz[i-1][j] > matriz[i][j-1]){
+                    matriz[i][j]=matriz[i-1][j];
+                }else if(matriz[i-1][j] < matriz[i][j-1]){
+                    matriz[i][j]=matriz[i][j-1];
+                }else{
+                    matriz[i][j]=0;
+                }
         }
     }
 
-
+    return res;
 }
+
 void abre_arquivos(){
       FILE* f; FILE* f2;
       int tam1,tam2;
