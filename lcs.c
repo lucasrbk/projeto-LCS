@@ -9,9 +9,15 @@ int i=0;
 
         printf("%s\n",texto1);
         printf("%s\n",texto2);
-        printf("tamanho dos textos: %d \n",tam);
+        printf("tamanho total dos textos: %d \n",tam);
 }
-
+int maior(int A, int B){
+    if (A>B){
+        return A;
+    }else{
+        return B;
+    }
+}
 void teste(){
 
 int matriz[10][10];
@@ -31,6 +37,8 @@ char sem[strlen(texto1)];
 
     resultante = lcs(texto1,texto2);
 
+    printf("resultante: %d",resultante);
+
 }
 
 int lcs(char *texto1, char* texto2){
@@ -47,21 +55,30 @@ int lcs(char *texto1, char* texto2){
         matriz[0][j]=0;
     }
 
-   for(i=0;i<=strlen(texto1);i++){
-        for(j=0;j<=strlen(texto2);j++){
-            if(texto1[i]==texto2[i]){
+   for(i=1;i<=strlen(texto1);i++){
+        for(j=1;j<=strlen(texto2);j++){
+            if(texto1[i-1]==texto2[j-1]){
                 matriz[i][j] = matriz[i-1][j-1] +1;
-                }else if(matriz[i-1][j] > matriz[i][j-1]){
+               /* }else if(matriz[i-1][j] > matriz[i][j-1]){
                     matriz[i][j]=matriz[i-1][j];
                 }else if(matriz[i-1][j] < matriz[i][j-1]){
-                    matriz[i][j]=matriz[i][j-1];
+                    matriz[i][j]=matriz[i][j-1];*/
                 }else{
-                    matriz[i][j]=0;
+                    matriz[i][j] = maior(matriz[i][j-1],matriz[i-1][j]);
                 }
         }
     }
 
-    return res;
+//imprimindo a matriz
+        for(i=0;i<=strlen(texto1);i++){
+            for(j=0;j<=strlen(texto2);j++){
+                    printf("[%d]",matriz[i][j]);
+            }
+            printf("\n");
+        }
+
+    return matriz[strlen(texto1)][strlen(texto2)];
+
 }
 
 void abre_arquivos(){
