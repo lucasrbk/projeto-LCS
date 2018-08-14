@@ -3,6 +3,10 @@
 #include <string.h>
 #include <locale.h>
 
+//assinaturas de funÃ§Ãµes
+void controle(char *texto1, char *texto2);
+int lcs(char *texto1, char *texto2);
+
 void tamanho(char *texto1,char *texto2){
 int tam = (strlen(texto1)+strlen(texto2));
 int i=0;
@@ -23,10 +27,10 @@ char texto1[100];
 char texto2[100];
 
     printf("\n digitar tem o limite de 1000 caracteres....\n");
-    printf("digite uma sequência: ");
+    printf("digite uma sequÃªncia: ");
     scanf("%s",&texto1);
 
-    printf("digite uma sequência: ");
+    printf("digite uma sequÃªncia: ");
     scanf("%s",&texto2);
 
     controle(texto1,texto2);
@@ -39,12 +43,12 @@ int resultado = 0;
 
     resultado = lcs(texto1,texto2);
     tamanho(texto1,texto2);
-    printf("\nsemelhanças encontradas: %d",resultado);
+    printf("\nsemelhanÃ§as encontradas: %d",resultado);
 
 
 }
 
-//função do LCS
+//funÃ§Ã£o do LCS
 int lcs(char *texto1, char *texto2){
 
 char matriz[strlen(texto1)+1][strlen(texto2)+1];
@@ -111,7 +115,7 @@ int x=0,y=0,i=0,j=0;
     }
     printf("\npontos semelhantes: %s", sem);
 
-// imprimindo o grau de semelhança
+// imprimindo o grau de semelhanÃ§a
 int maior;
 float grau;
 
@@ -124,14 +128,14 @@ float grau;
     grau = matriz[strlen(texto1)][strlen(texto2)];
     grau = ((grau)/(maior));
 
-    printf("\ngrau de semelhança: %.2f ", grau);
+    printf("\ngrau de semelhanÃ§a: %.2f ", grau);
 
-//fim da função
+//fim da funÃ§Ã£o
     return matriz[strlen(texto1)][strlen(texto2)];
 
 }
 
-//função para abrir os arquivos e começar o programa
+//funÃ§Ã£o para abrir os arquivos e comeÃ§ar o programa
 void abrir(){
       FILE* f; FILE* f2;
       int tam1=0,tam2=0;
