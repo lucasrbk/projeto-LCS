@@ -11,7 +11,6 @@ int i=0;
         printf("%s\n",texto2);
         printf("tamanho total dos textos: %d \n",tam);
 }
-
 int maior(int A, int B){
     if (A>B){
         return A;
@@ -19,31 +18,26 @@ int maior(int A, int B){
         return B;
     }
 }
+void controle(){
 
-void digitar(){
-
+int matriz[100][100];
 char texto1[100];
 char texto2[100];
+int tam = (strlen(texto1)+strlen(texto2));
+int i,j;
+int resultante;
 
-    printf("\n digitar tem o limite de 1000 caracteres....\n");
+
     printf("digite uma sequencia: ");
-    scanf("%s",&texto1);
-
+    scanf("%s",texto1);
     printf("digite uma sequencia: ");
-    scanf("%s",&texto2);
+    scanf("%s",texto2);
 
-    controle(texto1,texto2);
+    //imprimir(texto1,texto2);
 
-}
+    resultante = lcs(texto1,texto2);
 
-void controle(char *texto1, char *texto2){
-
-int resultado = 0;
-int total = (strlen(texto1)+(strlen(texto2)));
-    resultado = lcs(texto1,texto2);
-
-    printf("\nresultante: %d",resultado);
-    printf("\ntamanho total: %d",total);
+    printf("\nresultante: %d",resultante);
 
 }
 
@@ -78,7 +72,7 @@ int x=0,y=0,i=0,j=0;
 //imprimindo a matriz
     printf("\t");
     for(i=0;i<strlen(texto1);i++){
-        printf(" %c   ",texto1[i]);
+        printf(" %c ",texto1[i]);
     }
     printf("\n  ");
 
@@ -137,52 +131,28 @@ float grau;
 //função para abrir os arquivos e começar o programa
 void abrir(){
       FILE* f; FILE* f2;
-      int tam1=0,tam2=0;
-      char caracter;
+      int tam1,tam2;
+      char texto1[15],texto2[15];
 
-    f = fopen("texto1.txt", "r");
-    f2 = fopen("texto2.txt", "r");
+    f = fopen("palavras1.txt", "r");
+    f2 = fopen("palavras2.txt", "r");
 
-     while (!feof(f)){
-        caracter = fgetc(f);
-        tam1++;
-      }
-      while (!feof(f2)){
-        caracter = fgetc(f2);
-        tam2++;
-      }
-     fclose(f);
-    fclose(f2);
+    while( (fscanf(f,"%s", texto1))!=EOF ){
+			printf("%s \n", texto1);}
 
-char texto1[tam1+1];
-char texto2[tam2+1];
+    while( (fscanf(f2,"%s", texto2))!=EOF ){
+            printf("%s \n", texto2);}
 
-    f = fopen("texto1.txt", "r");
-    f2 = fopen("texto2.txt", "r");
+    tam1 = strlen(texto1);
+    printf("%d\n",tam1);
+    tam2 = strlen(texto2);
+    printf("%d\n",tam2);
 
-    while( (fscanf(f,"%s", texto1))!=EOF );
-    while( (fscanf(f2,"%s", texto2))!=EOF );
-
-    fclose(f);
-    fclose(f2);
-
-   controle(texto1,texto2);
 }
 
 int main(){
-    int e=0;
-    printf(" Digite\n 1 - para digitar os textos \n 2 - para ler arquivos de texto\n");
-    scanf("%d",&e);
 
-
-        if(e == 1){
-            digitar();
-            e = 0;
-        }else if(e == 2){
-            abrir();
-        }else{
-            printf("\ndigite apenas 1 ou 2....\n");
-        }
+    controle();
 
     return 0;
 
