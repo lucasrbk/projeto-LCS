@@ -1,15 +1,12 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-//#include <locale.h>
+#include <locale.h>
 
-void imprimir(char *texto1,char *texto2){
+void tamanho(char *texto1,char *texto2){
 int tam = (strlen(texto1)+strlen(texto2));
 int i=0;
-
-        printf("%s\n",texto1);
-        printf("%s\n",texto2);
-        printf("tamanho total dos textos: %d \n",tam);
+        printf("\ntamanho total dos textos: %d ",tam);
 }
 
 int maior(int A, int B){
@@ -26,10 +23,10 @@ char texto1[100];
 char texto2[100];
 
     printf("\n digitar tem o limite de 1000 caracteres....\n");
-    printf("digite uma sequencia: ");
+    printf("digite uma sequência: ");
     scanf("%s",&texto1);
 
-    printf("digite uma sequencia: ");
+    printf("digite uma sequência: ");
     scanf("%s",&texto2);
 
     controle(texto1,texto2);
@@ -39,11 +36,11 @@ char texto2[100];
 void controle(char *texto1, char *texto2){
 
 int resultado = 0;
-int total = (strlen(texto1)+(strlen(texto2)));
-    resultado = lcs(texto1,texto2);
 
-    printf("\nresultante: %d",resultado);
-    printf("\ntamanho total: %d",total);
+    resultado = lcs(texto1,texto2);
+    tamanho(texto1,texto2);
+    printf("\nsemelhanças encontradas: %d",resultado);
+
 
 }
 
@@ -127,7 +124,7 @@ float grau;
     grau = matriz[strlen(texto1)][strlen(texto2)];
     grau = ((grau)/(maior));
 
-    printf("\ngrau de semelhanca: %.2f ", grau);
+    printf("\ngrau de semelhança: %.2f ", grau);
 
 //fim da função
     return matriz[strlen(texto1)][strlen(texto2)];
@@ -151,7 +148,7 @@ void abrir(){
         caracter = fgetc(f2);
         tam2++;
       }
-     fclose(f);
+    fclose(f);
     fclose(f2);
 
 char texto1[tam1+1];
@@ -170,6 +167,7 @@ char texto2[tam2+1];
 }
 
 int main(){
+    setlocale(LC_ALL,"");
     int e=0;
     printf(" Digite\n 1 - para digitar os textos \n 2 - para ler arquivos de texto\n");
     scanf("%d",&e);
