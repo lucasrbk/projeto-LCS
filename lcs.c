@@ -23,10 +23,9 @@ int maior(int A, int B){
 
 void digitar(){
 
-char texto1[100];
-char texto2[100];
+char texto1[10000];
+char texto2[10000];
 
-    printf("\n digitar tem o limite de 1000 caracteres....\n");
     printf("digite uma sequência: ");
     scanf("%s",&texto1);
 
@@ -171,7 +170,7 @@ char texto2[tam2+1];
 }
 
 int main(){
-    setlocale(LC_ALL,"");
+    setlocale(LC_ALL,"utf-8");
     int e=0;
     printf(" Digite\n 1 - para digitar os textos \n 2 - para ler arquivos de texto\n");
     scanf("%d",&e);
