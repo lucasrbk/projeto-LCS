@@ -170,7 +170,7 @@ char texto2[tam2+1];
 }
 
 int main(){
-    setlocale(LC_ALL,"utf-8");
+    setlocale(LC_ALL,"");
     int e=0;
     printf(" Digite\n 1 - para digitar os textos \n 2 - para ler arquivos de texto\n");
     scanf("%d",&e);
